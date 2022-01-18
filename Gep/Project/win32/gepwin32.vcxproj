@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+    <ProjectGuid>{C0CC6CF1-2C76-411F-BE95-466F56D9C28D}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\Include\Common;..\..\Include\Win32;..\..\Source\Common\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CODE_PLATFORM=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Debug/gepwin32.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>.\Debug\gepwin32.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>..\..\Include\Common;..\..\Include\Win32;..\..\Source\Common\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CODE_PLATFORM=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/gepwin32.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>.\Release\gepwin32.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\common\bmpfile.cpp" />
+    <ClCompile Include="..\..\Source\common\dataio.cpp" />
+    <ClCompile Include="..\..\Source\common\emumovie.cpp" />
+    <ClCompile Include="..\..\Source\common\emurom.cpp" />
+    <ClCompile Include="..\..\Source\common\emusys.cpp" />
+    <ClCompile Include="..\..\Source\common\gzfileio.cpp" />
+    <ClCompile Include="..\..\Source\common\inputdevice.cpp" />
+    <ClCompile Include="..\..\Source\common\memspace.cpp" />
+    <ClCompile Include="..\..\Source\common\mixbuffer.cpp" />
+    <ClCompile Include="..\..\Source\common\mixconvert.cpp" />
+    <ClCompile Include="..\..\Source\common\path.cpp" />
+    <ClCompile Include="..\..\Source\common\pixelformat.cpp" />
+    <ClCompile Include="..\..\Source\common\prof.c" />
+    <ClCompile Include="..\..\Source\common\proflog.c" />
+    <ClCompile Include="..\..\Source\common\surface.cpp" />
+    <ClCompile Include="..\..\Source\common\unzip\explode.c" />
+    <ClCompile Include="..\..\Source\common\unzip\unreduce.c" />
+    <ClCompile Include="..\..\Source\common\unzip\unshrink.c" />
+    <ClCompile Include="..\..\Source\common\unzip\unzip.c" />
+    <ClCompile Include="..\..\Source\common\wavfile.cpp" />
+    <ClCompile Include="..\..\Source\common\zlib\adler32.c" />
+    <ClCompile Include="..\..\Source\common\zlib\compress.c" />
+    <ClCompile Include="..\..\Source\common\zlib\crc32.c" />
+    <ClCompile Include="..\..\Source\common\zlib\deflate.c" />
+    <ClCompile Include="..\..\Source\common\zlib\gzio.c" />
+    <ClCompile Include="..\..\Source\common\zlib\infblock.c" />
+    <ClCompile Include="..\..\Source\common\zlib\infcodes.c" />
+    <ClCompile Include="..\..\Source\common\zlib\inffast.c" />
+    <ClCompile Include="..\..\Source\common\zlib\inflate.c" />
+    <ClCompile Include="..\..\Source\common\zlib\inftrees.c" />
+    <ClCompile Include="..\..\Source\common\zlib\infutil.c" />
+    <ClCompile Include="..\..\Source\common\zlib\maketree.c" />
+    <ClCompile Include="..\..\Source\common\zlib\trees.c" />
+    <ClCompile Include="..\..\Source\common\zlib\uncompr.c" />
+    <ClCompile Include="..\..\Source\common\zlib\zutil.c" />
+    <ClCompile Include="..\..\Source\win32\console.cpp" />
+    <ClCompile Include="..\..\Source\win32\ddraw\ddsurface.cpp" />
+    <ClCompile Include="..\..\Source\win32\ddraw\winddraw.cpp" />
+    <ClCompile Include="..\..\Source\win32\dinput\inputjoystick.cpp" />
+    <ClCompile Include="..\..\Source\win32\dinput\inputkeyboard.cpp" />
+    <ClCompile Include="..\..\Source\win32\dinput\inputmouse.cpp" />
+    <ClCompile Include="..\..\Source\win32\dsound\dsbuffer.cpp" />
+    <ClCompile Include="..\..\Source\win32\dsound\windsound.cpp" />
+    <ClCompile Include="..\..\Source\win32\file.cpp" />
+    <ClCompile Include="..\..\Source\win32\profctr.c" />
+    <ClCompile Include="..\..\Source\win32\rendersurface.cpp" />
+    <ClCompile Include="..\..\Source\win32\textoutput.cpp" />
+    <ClCompile Include="..\..\Source\win32\window.cpp" />
+    <ClCompile Include="..\..\Source\win32\winmain.cpp" />
+    <ClCompile Include="..\..\Source\win32\winprintf.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Include\common\bmpfile.h" />
+    <ClInclude Include="..\..\Include\common\dataio.h" />
+    <ClInclude Include="..\..\Include\common\emuinput.h" />
+    <ClInclude Include="..\..\Include\common\emumovie.h" />
+    <ClInclude Include="..\..\Include\common\emurom.h" />
+    <ClInclude Include="..\..\Include\common\emusys.h" />
+    <ClInclude Include="..\..\Include\common\file.h" />
+    <ClInclude Include="..\..\Include\common\inputdevice.h" />
+    <ClInclude Include="..\..\Include\common\linebuffer.h" />
+    <ClInclude Include="..\..\Include\common\memspace.h" />
+    <ClInclude Include="..\..\Include\common\mixconvert.h" />
+    <ClInclude Include="..\..\Include\common\mixer.h" />
+    <ClInclude Include="..\..\Include\common\palette.h" />
+    <ClInclude Include="..\..\Include\common\path.h" />
+    <ClInclude Include="..\..\Include\common\pixelformat.h" />
+    <ClInclude Include="..\..\Include\common\prof.h" />
+    <ClInclude Include="..\..\Include\common\proflog.h" />
+    <ClInclude Include="..\..\Include\common\rendersurface.h" />
+    <ClInclude Include="..\..\Include\common\surface.h" />
+    <ClInclude Include="..\..\Include\common\wavfile.h" />
+    <ClInclude Include="..\..\Include\win32\ddsurface.h" />
+    <ClInclude Include="..\..\Include\win32\dsbuffer.h" />
+    <ClInclude Include="..\..\Include\win32\inputjoystick.h" />
+    <ClInclude Include="..\..\Include\win32\inputkeyboard.h" />
+    <ClInclude Include="..\..\Include\win32\inputmouse.h" />
+    <ClInclude Include="..\..\Include\win32\profctr.h" />
+    <ClInclude Include="..\..\Include\win32\textoutput.h" />
+    <ClInclude Include="..\..\Include\win32\types.h" />
+    <ClInclude Include="..\..\Include\win32\winddraw.h" />
+    <ClInclude Include="..\..\Include\win32\window.h" />
+    <ClInclude Include="..\..\Include\win32\windsound.h" />
+    <ClInclude Include="..\..\Include\win32\winmain.h" />
+    <ClInclude Include="..\..\Include\win32\winprintf.h" />
+    <ClInclude Include="..\..\Source\common\emuthread.h" />
+    <ClInclude Include="..\..\Source\common\gzfileio.h" />
+    <ClInclude Include="..\..\Source\common\unzip\unz.h" />
+    <ClInclude Include="..\..\Source\common\unzip\unzip.h" />
+    <ClInclude Include="..\..\Source\common\unzip\unzipP.h" />
+    <ClInclude Include="..\..\Source\common\unzip\zlib.h" />
+    <ClInclude Include="..\..\Source\common\zlib\deflate.h" />
+    <ClInclude Include="..\..\Source\common\zlib\infblock.h" />
+    <ClInclude Include="..\..\Source\common\zlib\infcodes.h" />
+    <ClInclude Include="..\..\Source\common\zlib\inffast.h" />
+    <ClInclude Include="..\..\Source\common\zlib\inffixed.h" />
+    <ClInclude Include="..\..\Source\common\zlib\inftrees.h" />
+    <ClInclude Include="..\..\Source\common\zlib\infutil.h" />
+    <ClInclude Include="..\..\Source\common\zlib\trees.h" />
+    <ClInclude Include="..\..\Source\common\zlib\zconf.h" />
+    <ClInclude Include="..\..\Source\common\zlib\zlib.h" />
+    <ClInclude Include="..\..\Source\common\zlib\zutil.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

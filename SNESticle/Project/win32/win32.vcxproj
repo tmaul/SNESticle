@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>SNESticle - Win32</ProjectName>
+    <ProjectGuid>{60673CC5-4215-4FEF-BA52-B9CB3EDFF46F}</ProjectGuid>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\Gep\Include\win32;..\..\..\Gep\Include\common;..\..\Source\common;..\..\source\win32;..\..\source\win32\resource;..\..\source\win32\interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PROF_ENABLED=0;CODE_PLATFORM=1;CODE_DEBUG=1;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling />
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>gepwin32.lib;ddraw.lib;dsound.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\Gep\Project\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)win32.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>..\..\..\Gep\Include\win32;..\..\..\Gep\Include\common;..\..\Source\common;..\..\source\win32;..\..\source\win32\resource;..\..\source\win32\interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PROF_ENABLED=0;CODE_PLATFORM=1;CODE_DEBUG=0;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>gepwin32.lib;ddraw.lib;dsound.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\Gep\Project\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\common\sn9x\CPUOPS.CPP">
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Level2</WarningLevel>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sn9x\SPC700.CPP">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sncpu.c" />
+    <ClCompile Include="..\..\Source\common\sncpu_c.c" />
+    <ClCompile Include="..\..\Source\common\sndebug.cpp" />
+    <ClCompile Include="..\..\Source\common\sndisasm.c" />
+    <ClCompile Include="..\..\Source\common\sndma.cpp" />
+    <ClCompile Include="..\..\Source\common\sndsp1.cpp" />
+    <ClCompile Include="..\..\Source\common\snes.cpp" />
+    <ClCompile Include="..\..\Source\common\snesreg.cpp" />
+    <ClCompile Include="..\..\Source\common\snio.cpp" />
+    <ClCompile Include="..\..\Source\common\snmemmap.cpp" />
+    <ClCompile Include="..\..\Source\common\snppu.cpp" />
+    <ClCompile Include="..\..\Source\common\snppubg.cpp" />
+    <ClCompile Include="..\..\Source\common\snppublend_c.cpp" />
+    <ClCompile Include="..\..\Source\common\snppucolor.cpp" />
+    <ClCompile Include="..\..\Source\common\snppuobj.cpp" />
+    <ClCompile Include="..\..\Source\common\snppurender.cpp" />
+    <ClCompile Include="..\..\Source\common\snppurender8.cpp" />
+    <ClCompile Include="..\..\Source\common\snrom.cpp" />
+    <ClCompile Include="..\..\Source\common\snspc.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcbrr.c" />
+    <ClCompile Include="..\..\Source\common\snspcdisasm.c" />
+    <ClCompile Include="..\..\Source\common\snspcdsp.cpp" />
+    <ClCompile Include="..\..\Source\common\snspcio.cpp" />
+    <ClCompile Include="..\..\Source\common\snspcmix.cpp" />
+    <ClCompile Include="..\..\Source\common\snspcrom.c" />
+    <ClCompile Include="..\..\Source\common\snspctimer.cpp" />
+    <ClCompile Include="..\..\Source\common\snspc_c.c" />
+    <ClCompile Include="..\..\Source\common\snstate.cpp" />
+    <ClCompile Include="..\..\Source\win32\input.cpp" />
+    <ClCompile Include="..\..\Source\win32\interface\memview.cpp" />
+    <ClCompile Include="..\..\Source\win32\interface\snesmemview.cpp" />
+    <ClCompile Include="..\..\Source\win32\interface\textview.cpp" />
+    <ClCompile Include="..\..\Source\win32\mainloop.cpp" />
+    <ClCompile Include="..\..\Source\win32\sneswin.cpp" />
+    <ClCompile Include="..\..\Source\win32\snmask.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\common\sncpu.h" />
+    <ClInclude Include="..\..\Source\common\sncpudefs.h" />
+    <ClInclude Include="..\..\Source\common\sncpu_c.h" />
+    <ClInclude Include="..\..\Source\common\sndebug.h" />
+    <ClInclude Include="..\..\Source\common\sndisasm.h" />
+    <ClInclude Include="..\..\Source\common\sndma.h" />
+    <ClInclude Include="..\..\Source\common\sndsp.h" />
+    <ClInclude Include="..\..\Source\common\sndsp1.h" />
+    <ClInclude Include="..\..\Source\common\snes.h" />
+    <ClInclude Include="..\..\Source\common\snesreg.h" />
+    <ClInclude Include="..\..\Source\common\snio.h" />
+    <ClInclude Include="..\..\Source\common\snmask.h" />
+    <ClInclude Include="..\..\Source\common\snmemmap.h" />
+    <ClInclude Include="..\..\Source\common\snppu.h" />
+    <ClInclude Include="..\..\Source\common\snppucolor.h" />
+    <ClInclude Include="..\..\Source\common\snppurender.h" />
+    <ClInclude Include="..\..\Source\common\snppurenderi.h" />
+    <ClInclude Include="..\..\Source\common\snqueue.h" />
+    <ClInclude Include="..\..\Source\common\snrom.h" />
+    <ClInclude Include="..\..\Source\common\snspc.h" />
+    <ClInclude Include="..\..\Source\common\snspcbrr.h" />
+    <ClInclude Include="..\..\Source\common\snspcdisasm.h" />
+    <ClInclude Include="..\..\Source\common\snspcdsp.h" />
+    <ClInclude Include="..\..\Source\common\snspcio.h" />
+    <ClInclude Include="..\..\Source\common\snspcmix.h" />
+    <ClInclude Include="..\..\Source\common\snspcmixi.h" />
+    <ClInclude Include="..\..\Source\common\snspcrom.h" />
+    <ClInclude Include="..\..\Source\common\snspctimer.h" />
+    <ClInclude Include="..\..\Source\common\snspc_c.h" />
+    <ClInclude Include="..\..\Source\common\snstate.h" />
+    <ClInclude Include="..\..\Source\win32\input.h" />
+    <ClInclude Include="..\..\Source\win32\interface\memview.h" />
+    <ClInclude Include="..\..\Source\win32\interface\snesmemview.h" />
+    <ClInclude Include="..\..\Source\win32\interface\textview.h" />
+    <ClInclude Include="..\..\Source\win32\mainloop.h" />
+    <ClInclude Include="..\..\Source\win32\resource\resource.h" />
+    <ClInclude Include="..\..\Source\win32\sneswin.h" />
+    <ClInclude Include="..\..\Source\win32\snmaskop.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\win32\resource\gepres.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Source\win32\resource\icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Gep\Project\win32\gepwin32.vcxproj">
+      <Project>{c0cc6cf1-2c76-411f-be95-466f56d9c28d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="\proj\SNESticle\Source\win32\resource\gepres.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

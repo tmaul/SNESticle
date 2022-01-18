@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{64b63281-8c3b-4178-a334-93a56a3943e3}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Snes">
+      <UniqueIdentifier>{15de5502-85c1-450e-8bb1-c27727bd215f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Snes\SN65816">
+      <UniqueIdentifier>{655af036-7edd-452f-b440-79840391e600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Snes\SPC700">
+      <UniqueIdentifier>{bff48c73-2f5d-4379-9bba-99477d8df8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Snes\PPU">
+      <UniqueIdentifier>{779f80b1-c339-4df6-98c1-77b7514994ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Win32">
+      <UniqueIdentifier>{883c21f1-92f1-4cbf-b564-0c3fefb0b392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Win32\Interface">
+      <UniqueIdentifier>{80ec2fcf-4f14-4504-b691-0795f1b3f920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{4922e136-58d2-4b65-b7f9-ea5190e29fe2}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\common\sndebug.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sndma.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sndsp1.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snes.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snesreg.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snio.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snmemmap.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snrom.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snstate.cpp">
+      <Filter>Source Files\Snes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sn9x\CPUOPS.CPP">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sncpu.c">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sncpu_c.c">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sndisasm.c">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspc.c">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspc_c.c">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcbrr.c">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcdisasm.c">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcdsp.cpp">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcio.cpp">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcmix.cpp">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspcrom.c">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snspctimer.cpp">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\sn9x\SPC700.CPP">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\snmask.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppu.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppubg.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppublend_c.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppucolor.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppuobj.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppurender.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\common\snppurender8.cpp">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\input.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\mainloop.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\interface\memview.cpp">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\interface\snesmemview.cpp">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\sneswin.cpp">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\win32\interface\textview.cpp">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\common\sndebug.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sndma.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sndsp.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sndsp1.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snes.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snesreg.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snio.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snmemmap.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snqueue.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snrom.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snstate.h">
+      <Filter>Source Files\Snes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sncpu.h">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sncpu_c.h">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sncpudefs.h">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\sndisasm.h">
+      <Filter>Source Files\Snes\SN65816</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspc.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspc_c.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcbrr.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcdisasm.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcdsp.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcio.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcmix.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcmixi.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspcrom.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snspctimer.h">
+      <Filter>Source Files\Snes\SPC700</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snmask.h">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\snmaskop.h">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snppu.h">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snppucolor.h">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snppurender.h">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\common\snppurenderi.h">
+      <Filter>Source Files\Snes\PPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\input.h">
+      <Filter>Source Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\mainloop.h">
+      <Filter>Source Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\interface\memview.h">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\interface\snesmemview.h">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\sneswin.h">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\interface\textview.h">
+      <Filter>Source Files\Win32\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\win32\resource\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\win32\resource\gepres.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Source\win32\resource\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\todo.txt" />
+  </ItemGroup>
+</Project>
