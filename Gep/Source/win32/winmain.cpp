@@ -65,7 +65,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine
 	_WinMain_hInstance = hInstance;
 
 	cc.dwSize = sizeof(cc);
-	cc.dwICC  = ICC_WIN95_CLASSES;
+	//cc.dwICC  = ICC_WIN95_CLASSES;
 	Bool bRet = InitCommonControlsEx(&cc);
 
 	ConInit();

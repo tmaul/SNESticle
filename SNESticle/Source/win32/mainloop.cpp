@@ -65,11 +65,10 @@ void ConPuts(ConE eCon, const char *pString)
 #include <thread>
 
 
+auto lastTime = std::chrono::steady_clock::now();
+
 int FPS = 60;
-auto time_between_frames = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
-
-auto target_tp = std::chrono::steady_clock::now();
-
+auto maxPeriod = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
 
 Bool MainLoopInit()
 {
@@ -123,27 +122,34 @@ Bool MainLoopInit()
 	return TRUE;
 }
 
+
+static auto currTime = std::chrono::steady_clock::now();
+
 Bool MainLoopProcess()
 {
 	InputPoll();
 
+	currTime = std::chrono::steady_clock::now();
+	auto deltaTime = currTime - lastTime;
 
 
-	target_tp += time_between_frames;          // calculate target point in time
-	std::this_thread::sleep_until(target_tp);
-
-
-	PROF_ENTER("Frame");
-	_pSnesWin->Process();
-	PROF_LEAVE("Frame");
-
-	if (InputGetKey('I'))
+	if (deltaTime >= maxPeriod)
 	{
-	 	ProfStartProfile(1);
-	}
+		lastTime = currTime;
+
+		PROF_ENTER("Frame");
+		_pSnesWin->Process();
+		PROF_LEAVE("Frame");
+
+		if (InputGetKey('I'))
+		{
+			ProfStartProfile(1);
+		}
+
 #if PROF_ENABLED
-	ProfProcess();
+		ProfProcess();
 #endif
+	}
 	return TRUE;
 }
 
