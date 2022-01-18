@@ -418,31 +418,31 @@ Int32 SNSPCExecute_C(SNSpcT *pCpu)
 		Uint32 uOpcode;
 		Uint32 t0,t1,t2;
 
-#if  SNSPC_STATEDEBUG
-		pCpu->Regs.rPC = rPC;
-		if (g_bStateDebug)
-		{
-			Char str[64];
-  
-	  		SNSPCDisasm(str, pCpu->Mem + pCpu->Regs.rPC, pCpu->Regs.rPC);
-            pCpu->Cycles = nCycles;
-
-            ConDebug("%06d: spc %04X: %02X %02X %02X %02X %c%c%c%c %s (%d)\n", 
-                SNSPCGetCounter(pCpu, SNSPC_COUNTER_FRAME),
-                rPC, 
-				pCpu->Regs.rA,
-				pCpu->Regs.rX,
-				pCpu->Regs.rY,
-				pCpu->Regs.rSP,
-				(fN&0x8000) ? 'N' : 'n',
-				(pCpu->Regs.rPSW&SNSPC_FLAG_V) ? 'V' : 'v',
-				((fZ&0xFFFF)==0) ? 'Z' : 'z',
-				(fC&0x01) ? 'C' : 'c',
-				str,
-                nCycles
-			);
-		}
-#endif
+//#if  SNSPC_STATEDEBUG
+//		pCpu->Regs.rPC = rPC;
+//		if (g_bStateDebug)
+//		{
+//			Char str[64];
+//  
+//	  		SNSPCDisasm(str, pCpu->Mem + pCpu->Regs.rPC, pCpu->Regs.rPC);
+//            pCpu->Cycles = nCycles;
+//
+//            ConDebug("%06d: spc %04X: %02X %02X %02X %02X %c%c%c%c %s (%d)\n", 
+//                SNSPCGetCounter(pCpu, SNSPC_COUNTER_FRAME),
+//                rPC, 
+//				pCpu->Regs.rA,
+//				pCpu->Regs.rX,
+//				pCpu->Regs.rY,
+//				pCpu->Regs.rSP,
+//				(fN&0x8000) ? 'N' : 'n',
+//				(pCpu->Regs.rPSW&SNSPC_FLAG_V) ? 'V' : 'v',
+//				((fZ&0xFFFF)==0) ? 'Z' : 'z',
+//				(fC&0x01) ? 'C' : 'c',
+//				str,
+//                nCycles
+//			);
+//		}
+//#endif
 
 	#if 0
 		int i;

@@ -22,8 +22,8 @@ enum SnesWinStateE
 class CSnesWin : public CGepWin
 {
 	SnesSystem		m_Snes;
-	SnesRom			m_Rom;
-	CDDSurface		m_DDSurface;
+
+
 	SnesStateT		m_State;
 	CWavFile		m_WavFile;
 //	CMixConvert		m_MixConvert;

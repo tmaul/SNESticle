@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <commdlg.h>
-#include "System/types.h"
+#include "types.h"
 #include "console.h"
 #include "dataio.h"
 #include "sneswin.h"
@@ -19,9 +19,11 @@
 #include "snppucolor.h"
 #include "emumovie.h"
 #include "sndebug.h"
+extern "C"
+{
 #include "sncpu_c.h"
 #include "snspc_c.h"
-
+}
 static Char _SnesWin_ClassName[]="SNESticleClass";
 static Char _SnesWin_AppName[]="SNESticle";
 
@@ -36,7 +38,8 @@ static Char _SnesWin_AppName[]="SNESticle";
 
 Emu::MovieClip *s_pMovieClip;
 
-
+static SnesRom			m_Rom;
+static CDDSurface		m_DDSurface;
 //
 //
 //
@@ -664,7 +667,7 @@ void CSnesWin::FreeRom()
 	m_WavFile.Close();
 
 	m_Snes.SetRom(NULL);
-	m_Rom.Unload();
+	//m_Rom.Unload();
 	m_DDSurface.Clear();
 
 	//m_Mixer.Reset();

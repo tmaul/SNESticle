@@ -147,7 +147,7 @@ void CDDSurface::Free()
 {
 	if (m_pSurface)
 	{
-		m_pSurface->Release();
+//		m_pSurface->Release();
 		m_pSurface = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 #include "sndsp1.h"
 
 
-#include "sn9x/dsp1emu.c"
+#include "dsp1emu.c"
 
 
 

@@ -18,7 +18,7 @@ void SnesSystem::SyncSPC(Int32 uExtra)
 {
 	Int32 nCycles;
 
-#if SNES_DEBUG
+/*#if SNES_DEBUG
     if (g_bStateDebug)
     {
         ConDebug("SyncSPC cpu=%06d spc=%06d\n", 
@@ -27,7 +27,7 @@ void SnesSystem::SyncSPC(Int32 uExtra)
             );
 
     }
-#endif      
+#endif */     
 
     Int32 CpuTime = SNCPUGetCounter(&m_Cpu, SNCPU_COUNTER_FRAME);
     Int32 SpcTime = SNSPCGetCounter(&m_Spc, SNSPC_COUNTER_FRAME);
@@ -48,16 +48,16 @@ void SnesSystem::SyncSPC(Int32 uExtra)
 #endif
     }
 
-#if SNES_DEBUG
-    if (g_bStateDebug)
-    {
-        ConDebug("DoneSyncSPC cpu=%06d spc=%06d\n", 
-            SNCPUGetCounter(&m_Cpu, SNCPU_COUNTER_FRAME),
-            SNSPCGetCounter(&m_Spc, SNSPC_COUNTER_FRAME)
-            );
-
-    }
-#endif      
+//#if SNES_DEBUG
+//    if (g_bStateDebug)
+//    {
+//        ConDebug("DoneSyncSPC cpu=%06d spc=%06d\n", 
+//            SNCPUGetCounter(&m_Cpu, SNCPU_COUNTER_FRAME),
+//            SNSPCGetCounter(&m_Spc, SNSPC_COUNTER_FRAME)
+//            );
+//
+//    }
+//#endif      
 
     
     
