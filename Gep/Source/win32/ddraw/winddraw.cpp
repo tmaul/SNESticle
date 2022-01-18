@@ -7,6 +7,7 @@
 #include "console.h"
 #include "ddsurface.h"
 
+
 #define DDRAW_RELEASE(__pObj) if (__pObj) {(__pObj)->Release(); (__pObj)=NULL;}
 
 // direct draw objects
@@ -105,7 +106,7 @@ Bool DDrawSetWindowed(HWND hWnd, Uint32 Flags)
 
 void DDrawWaitVBlank()
 {
-	_DDraw_pObject->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, NULL);
+	//_DDraw_pObject->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, NULL);
 }
 
 void DDrawBltFrame(RECT *pDestRect, CDDSurface *pSurface)

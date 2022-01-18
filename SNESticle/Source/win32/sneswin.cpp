@@ -545,7 +545,7 @@ void CSnesWin::Process()
 			}
 
 #if !CODE_DEBUG
-			DDrawWaitVBlank();
+		//	DDrawWaitVBlank();
 #endif
 			OnPaint();
 		}

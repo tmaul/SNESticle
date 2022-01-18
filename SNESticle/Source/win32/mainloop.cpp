@@ -61,8 +61,19 @@ void ConPuts(ConE eCon, const char *pString)
 }
 
 
+#include <chrono>
+#include <thread>
+
+
+int FPS = 60;
+auto time_between_frames = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
+
+auto target_tp = std::chrono::steady_clock::now();
+
+
 Bool MainLoopInit()
 {
+
 //	ConPrint("StateSize: %d\n", sizeof(NesStateT));
 	#if PROF_ENABLED
 	ProfInit(32768);
@@ -115,6 +126,12 @@ Bool MainLoopInit()
 Bool MainLoopProcess()
 {
 	InputPoll();
+
+
+
+	target_tp += time_between_frames;          // calculate target point in time
+	std::this_thread::sleep_until(target_tp);
+
 
 	PROF_ENTER("Frame");
 	_pSnesWin->Process();
