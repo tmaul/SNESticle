@@ -4,7 +4,7 @@
 
 #include <ddraw.h>
 
-typedef LPDIRECTDRAW2 DDrawObjectT;
+typedef LPDIRECTDRAW7 DDrawObjectT;
 
 DDrawObjectT DDrawGetObject();
 Bool DDrawInit();

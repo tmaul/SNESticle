@@ -694,7 +694,7 @@ void CSnesWin::OpenRomDlg()
 	ofn.hwndOwner = GetWnd();
 	ofn.lpstrFile = szFile;
 	ofn.nMaxFile = sizeof(szFile);
-	ofn.lpstrFilter = "SNES Roms\0*.SMC;*.FIG\0";
+	ofn.lpstrFilter = "SNES Roms\0*.SMC;*.FIG;*.SFC\0";
 	ofn.nFilterIndex = 1;
 	ofn.lpstrFileTitle = NULL;
 	ofn.nMaxFileTitle = 0;

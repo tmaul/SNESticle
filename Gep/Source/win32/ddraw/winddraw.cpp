@@ -14,8 +14,8 @@
 static DDrawObjectT			_DDraw_pObject=NULL;	// direct draw 2.0 object
 
 // direct draw surfaces
-static LPDIRECTDRAWSURFACE _DDraw_pPrimary;
-static LPDIRECTDRAWSURFACE _DDraw_pBackBuffer;
+static LPDIRECTDRAWSURFACE7 _DDraw_pPrimary;
+static LPDIRECTDRAWSURFACE7 _DDraw_pBackBuffer;
 
 // clipper for primary surface
 static LPDIRECTDRAWCLIPPER _DDraw_pClipper;
@@ -30,12 +30,12 @@ DDrawObjectT DDrawGetObject()
 
 Bool DDrawInit()
 {
-	LPDIRECTDRAW pDDO1;	// direct draw 1.0 object
+	LPDIRECTDRAW7 pDDO1;	// direct draw 1.0 object
 
 	//create ddraw object
-	if (DirectDrawCreate(NULL,&pDDO1,NULL)==DD_OK)
+	if (DirectDrawCreateEx(NULL, (void**)&pDDO1, IID_IDirectDraw7, NULL) ==DD_OK)
 	{
-		if (pDDO1->QueryInterface(IID_IDirectDraw2, (LPVOID *) &_DDraw_pObject)==DD_OK)
+		if (pDDO1->QueryInterface(IID_IDirectDraw7, (LPVOID *) &_DDraw_pObject)==DD_OK)
 		{
 			pDDO1->Release();
 			return TRUE;
@@ -64,7 +64,7 @@ Bool DDrawSetWindowed(HWND hWnd, Uint32 Flags)
 {
 	DDrawObjectT pDDO = DDrawGetObject();
 	HRESULT	err;
-	DDSURFACEDESC   ddsd;
+	DDSURFACEDESC2   ddsd;
 	
 	// set cooperative mode 
 	if ((err=pDDO->SetCooperativeLevel( hWnd,DDSCL_NORMAL | DDSCL_ALLOWREBOOT))!=DD_OK)
@@ -111,8 +111,8 @@ void DDrawWaitVBlank()
 
 void DDrawBltFrame(RECT *pDestRect, CDDSurface *pSurface)
 {
-	LPDIRECTDRAWSURFACE pSrc;
-	LPDIRECTDRAWSURFACE pDest;
+	LPDIRECTDRAWSURFACE7 pSrc;
+	LPDIRECTDRAWSURFACE7 pDest;
 
 	pSrc  =	pSurface->GetDDSurface();
 	pDest = _DDraw_pPrimary;

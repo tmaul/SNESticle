@@ -8,7 +8,7 @@
 
 class CDDSurface : public CRenderSurface
 {
-	struct IDirectDrawSurface	*m_pSurface;
+	struct IDirectDrawSurface7 *m_pSurface;
 
 public:
 	CDDSurface();
@@ -20,7 +20,7 @@ public:
 	virtual void Lock();
 	virtual void Unlock();
 
-	struct IDirectDrawSurface	*GetDDSurface() {return m_pSurface;}
+	struct IDirectDrawSurface7 *GetDDSurface() {return m_pSurface;}
 };
 
 #endif

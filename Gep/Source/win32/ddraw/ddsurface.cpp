@@ -1,4 +1,4 @@
-
+#define DIRECTDRAW_VERSION 0x0700 
 #include <ddraw.h>
 #include "types.h"
 #include "winddraw.h"
@@ -55,7 +55,7 @@ void CDDSurface::Lock()
 {
 	if (m_pSurface)
 	{
-		DDSURFACEDESC ddsd;
+		DDSURFACEDESC2 ddsd;
 		HRESULT err;
 		ddsd.dwSize = sizeof(ddsd);
 
@@ -81,7 +81,7 @@ void CDDSurface::Unlock()
 {
 	if (m_pSurface)
 	{
-		m_pSurface->Unlock(m_pData);
+		m_pSurface->Unlock((LPRECT)m_pData);
 	}
 	m_pData   = NULL;
 	m_uWidth  = 0;
@@ -94,7 +94,7 @@ Bool CDDSurface::Alloc(Uint32 uWidth, Uint32 uHeight, DDPIXELFORMAT *pDDFormat)
 {
 	DDrawObjectT pDDO = DDrawGetObject();
 	HRESULT err;
-	DDSURFACEDESC ddsd;
+	DDSURFACEDESC2 ddsd;
 
 	Free();
 
@@ -103,8 +103,8 @@ Bool CDDSurface::Alloc(Uint32 uWidth, Uint32 uHeight, DDPIXELFORMAT *pDDFormat)
 	ddsd.dwFlags		= DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH;
 	ddsd.dwWidth		= uWidth;
 	ddsd.dwHeight		= uHeight;
-	ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN| DDSCAPS_SYSTEMMEMORY;
-//	ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN| DDSCAPS_VIDEOMEMORY; 
+	//ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN| DDSCAPS_SYSTEMMEMORY;
+	ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN| DDSCAPS_VIDEOMEMORY; 
 
 	if (pDDFormat)
 	{
@@ -122,7 +122,7 @@ Bool CDDSurface::Alloc(Uint32 uWidth, Uint32 uHeight, DDPIXELFORMAT *pDDFormat)
 	if (m_pSurface)
 	{
 		DDBLTFX ddbltfx;
-		DDSCAPS caps;
+		DDSCAPS2 caps;
 
 		memset(&ddbltfx, 0, sizeof(ddbltfx));
 		ddbltfx.dwSize = sizeof(ddbltfx);
