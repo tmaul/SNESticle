@@ -22,3 +22,5 @@ nvram
 /SNESticle/Project/win32/Debug
 /SNESticle/Project/win32/Release
 /SNESticle/Project/win32/win32.vcxproj.user
+*.pdb
+*.ncb
