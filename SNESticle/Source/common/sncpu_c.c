@@ -899,6 +899,11 @@ Int32 SNCPUExecute_C(SNCpuT *pCpu)
 		SNCPU_SUBCYCLES(2);
 		break;
 
+	SNCPU_OP_ALL(0x42)
+		Uint32 uDestBank;
+		SNCPU_FETCH8(uDestBank);
+		SNCPU_SUBCYCLES(2);
+		break;
 		default:	// unimplemented opcode
 			SNCPU_SUBCYCLES(1);
 		}

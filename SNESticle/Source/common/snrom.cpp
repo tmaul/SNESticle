@@ -333,6 +333,7 @@ void SnesRom::SetCartInfo(SNRomInfoT *pCartInfo)
 		switch (pCartInfo->RomType)
 		{
 		case 0:
+		case 53:
 			m_Flags		 = SNROM_FLAG_ROM;
 			break;
 		case 1:
