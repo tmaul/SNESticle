@@ -744,6 +744,7 @@ void CSnesWin::OpenRomDlg()
 	{
 		LoadRom(ofn.lpstrFile);
 	} 
+
 }
 
 

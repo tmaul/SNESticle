@@ -76,7 +76,7 @@ Bool MainLoopInit()
 	_pSnesWin = new CSnesWin();
 	WinMainSetWin(_pSnesWin);
 
-	_pSnesWin->SetSize(256 * 2, 224 * 2);
+	_pSnesWin->SetSize(256 * 3, 224 * 3);
 
 	_pSnesWin->SetInput(0, InputGetDevice(INPUT_DEVICE_KEYBOARD0));
 //	_pSnesWin->SetInput(0, InputGetDevice(INPUT_DEVICE_JOYSTICK0));
@@ -90,13 +90,7 @@ Bool MainLoopInit()
 
 	// init dsound
 	DSoundInit(_pSnesWin->GetWnd());
-#if CODE_DEBUG
-//	DSoundSetFormat(44100, 16, 1, 44100 / 5);
-	DSoundSetFormat(32000, 16, 2, 32000 * 2);
-//	DSoundSetFormat(32000, 16, 2, 32000);
-#else
 	DSoundSetFormat(32000, 16, 2, 32000 / 10);
-#endif
 
 	if (_RomFile)
 	_pSnesWin->LoadRom(_RomFile);
