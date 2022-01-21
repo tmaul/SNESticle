@@ -61,15 +61,6 @@ void ConPuts(ConE eCon, const char *pString)
 }
 
 
-#include <chrono>
-#include <thread>
-
-
-auto lastTime = std::chrono::steady_clock::now();
-
-int FPS = 60;
-auto maxPeriod = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
-
 Bool MainLoopInit()
 {
 
@@ -119,37 +110,28 @@ Bool MainLoopInit()
 	ConDebug("SNStateSPCDSPT  %d\n",sizeof(SNStateSPCDSPT     ));
 
 */
+	
 	return TRUE;
 }
 
-
-static auto currTime = std::chrono::steady_clock::now();
 
 Bool MainLoopProcess()
 {
 	InputPoll();
 
-	currTime = std::chrono::steady_clock::now();
-	auto deltaTime = currTime - lastTime;
+	PROF_ENTER("Frame");
+	_pSnesWin->Process();
+	PROF_LEAVE("Frame");
 
-
-	if (deltaTime >= maxPeriod)
+	if (InputGetKey('I'))
 	{
-		lastTime = currTime;
-
-		PROF_ENTER("Frame");
-		_pSnesWin->Process();
-		PROF_LEAVE("Frame");
-
-		if (InputGetKey('I'))
-		{
-			ProfStartProfile(1);
-		}
+		ProfStartProfile(1);
+	}
 
 #if PROF_ENABLED
-		ProfProcess();
+	ProfProcess();
 #endif
-	}
+	
 	return TRUE;
 }
 

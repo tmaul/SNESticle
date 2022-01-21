@@ -40,6 +40,23 @@ Emu::MovieClip *s_pMovieClip;
 
 static SnesRom			m_Rom;
 static CDDSurface		m_DDSurface;
+
+#include <chrono>
+#include <thread>
+
+
+auto lastTime = std::chrono::steady_clock::now();
+
+
+
+#define PALFPS 50
+#define NTSCFPS 60
+
+
+int FPS = NTSCFPS;
+auto maxPeriod = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
+static auto currTime = std::chrono::steady_clock::now();
+
 //
 //
 //
@@ -410,147 +427,156 @@ Bool g_bStateDebug = FALSE;
 
 void CSnesWin::Process()
 {
-	if (m_Rom.IsLoaded())
+	currTime = std::chrono::steady_clock::now();
+	auto deltaTime = currTime - lastTime;
+
+
+	if (deltaTime >= maxPeriod)
 	{
-		if (m_eState == SNESWIN_STATE_RUN || m_eState== SNESWIN_STATE_STEPFRAME)
+		lastTime = currTime;
+
+		if (m_Rom.IsLoaded())
 		{
-			Emu::SysInputT Input;
-			CMixBuffer *pMixBuffer = NULL;
-
-			ReadInput(&Input);
-
-            if (s_pMovieClip->IsPlaying())
-            {
-                if (!s_pMovieClip->PlayFrame(Input))
-                {
-                    s_pMovieClip->PlayEnd();
-                    ConPrint("Movie: Play End\n");
-                }
-            }
-
-            if (s_pMovieClip->IsRecording())
-            {
-                if (!s_pMovieClip->RecordFrame(Input))
-                {
-                    s_pMovieClip->RecordEnd();
-                    ConPrint("Movie: Reached end of record buffer!\n");
-                }
-            }
-
-            
-            if (m_WavFile.IsOpen())
+			if (m_eState == SNESWIN_STATE_RUN || m_eState == SNESWIN_STATE_STEPFRAME)
 			{
-				pMixBuffer = &m_WavFile;
-			} else
-			{
-				pMixBuffer =  DSoundGetBuffer();
-			}
-			//pMixBuffer = NULL;
+				Emu::SysInputT Input;
+				CMixBuffer* pMixBuffer = NULL;
 
-			#if 0
-			SNCPUSetExecuteFunc(SNCPUExecute_C);
-			//SNSPCSetExecuteFunc(SNSPCExecute_C);
-			
-			SNSPCSetExecuteFunc(SNSPCExecute_C);
-			m_Snes.SaveState(&_TestState[0]);
-			m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
-			m_Snes.SaveState(&_TestState[1]);
+				ReadInput(&Input);
 
-			SNSPCSetExecuteFunc(SNSPCExecute_9X);
-			m_Snes.RestoreState(&_TestState[0]);
-			m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
-			m_Snes.SaveState(&_TestState[2]);
+				if (s_pMovieClip->IsPlaying())
+				{
+					if (!s_pMovieClip->PlayFrame(Input))
+					{
+						s_pMovieClip->PlayEnd();
+						ConPrint("Movie: Play End\n");
+					}
+				}
 
-			if (memcmp(&_TestState[1], &_TestState[2],sizeof(SnesStateT)))
-			{
-				ConDebug("State fault\n");
-				SNStateCompare(&_TestState[1], &_TestState[2]);
+				if (s_pMovieClip->IsRecording())
+				{
+					if (!s_pMovieClip->RecordFrame(Input))
+					{
+						s_pMovieClip->RecordEnd();
+						ConPrint("Movie: Reached end of record buffer!\n");
+					}
+				}
 
-				g_bStateDebug = TRUE;
-				ConRedirect(CON_DEBUG, "snspc_c.log");
-				SNSPCSetDebug(TRUE, 10000000);
+
+				if (m_WavFile.IsOpen())
+				{
+					pMixBuffer = &m_WavFile;
+				}
+				else
+				{
+					pMixBuffer = DSoundGetBuffer();
+				}
+				//pMixBuffer = NULL;
+
+#if 0
+				SNCPUSetExecuteFunc(SNCPUExecute_C);
+				//SNSPCSetExecuteFunc(SNSPCExecute_C);
+
 				SNSPCSetExecuteFunc(SNSPCExecute_C);
-				m_Snes.RestoreState(&_TestState[0]);
+				m_Snes.SaveState(&_TestState[0]);
 				m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
 				m_Snes.SaveState(&_TestState[1]);
-				ConRedirect(CON_DEBUG, NULL);
 
 				SNSPCSetExecuteFunc(SNSPCExecute_9X);
-				ConRedirect(CON_DEBUG, "snspc_9x.log");
 				m_Snes.RestoreState(&_TestState[0]);
 				m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
 				m_Snes.SaveState(&_TestState[2]);
-				g_bStateDebug = FALSE;
-				SNSPCSetDebug(FALSE, 0);
-				ConRedirect(CON_DEBUG, NULL);
 
-				SNStateCompare(&_TestState[1], &_TestState[2]);
-			}
-			#elif 0
-		
-			SNSPCSetExecuteFunc(SNSPCExecute_C);
-			SNCPUSetExecuteFunc(SNCPUExecute_C);
-			m_Snes.SaveState(&_TestState[0]);
-			m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC );
-			m_Snes.SaveState(&_TestState[1]);
+				if (memcmp(&_TestState[1], &_TestState[2], sizeof(SnesStateT)))
+				{
+					ConDebug("State fault\n");
+					SNStateCompare(&_TestState[1], &_TestState[2]);
 
-			SNCPUSetExecuteFunc(SNCPUExecute_C);
-			m_Snes.RestoreState(&_TestState[0]);
-			m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
-			m_Snes.SaveState(&_TestState[2]);
+					g_bStateDebug = TRUE;
+					ConRedirect(CON_DEBUG, "snspc_c.log");
+					SNSPCSetDebug(TRUE, 10000000);
+					SNSPCSetExecuteFunc(SNSPCExecute_C);
+					m_Snes.RestoreState(&_TestState[0]);
+					m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
+					m_Snes.SaveState(&_TestState[1]);
+					ConRedirect(CON_DEBUG, NULL);
 
-			if (memcmp(&_TestState[1], &_TestState[2],sizeof(SnesStateT)))
-			{
-				ConDebug("State fault\n");
-				SNStateCompare(&_TestState[1], &_TestState[2]);
+					SNSPCSetExecuteFunc(SNSPCExecute_9X);
+					ConRedirect(CON_DEBUG, "snspc_9x.log");
+					m_Snes.RestoreState(&_TestState[0]);
+					m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
+					m_Snes.SaveState(&_TestState[2]);
+					g_bStateDebug = FALSE;
+					SNSPCSetDebug(FALSE, 0);
+					ConRedirect(CON_DEBUG, NULL);
 
-				g_bStateDebug = TRUE;
-				ConRedirect(CON_DEBUG, "sncpu_c.log");
-				SNCPUSetDebug(TRUE, 1);
+					SNStateCompare(&_TestState[1], &_TestState[2]);
+				}
+#elif 0
+
+				SNSPCSetExecuteFunc(SNSPCExecute_C);
 				SNCPUSetExecuteFunc(SNCPUExecute_C);
-				m_Snes.RestoreState(&_TestState[0]);
+				m_Snes.SaveState(&_TestState[0]);
 				m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
 				m_Snes.SaveState(&_TestState[1]);
-				ConRedirect(CON_DEBUG, NULL);
 
 				SNCPUSetExecuteFunc(SNCPUExecute_C);
-				ConRedirect(CON_DEBUG, "sncpu_9x.log");
 				m_Snes.RestoreState(&_TestState[0]);
 				m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
 				m_Snes.SaveState(&_TestState[2]);
-				g_bStateDebug = FALSE;
-				SNCPUSetDebug(FALSE, 0);
-				ConRedirect(CON_DEBUG, NULL);
 
-				SNStateCompare(&_TestState[1], &_TestState[2]);
-				
-			}
-			#else
-			//pMixBuffer=NULL;
-			SNCPUSetExecuteFunc(SNCPUExecute_C);
- 	//	SNCPUSetExecuteFunc(SNCPUExecute_9X);
-			SNSPCSetExecuteFunc(SNSPCExecute_C);
-			//SNSPCSetExecuteFunc(SNSPCExecute_9X);
-			m_Snes.ExecuteFrame(&Input, &m_DDSurface, pMixBuffer, Emu::System::MODE_ACCURATENONDETERMINISTIC);
-			#endif
+				if (memcmp(&_TestState[1], &_TestState[2], sizeof(SnesStateT)))
+				{
+					ConDebug("State fault\n");
+					SNStateCompare(&_TestState[1], &_TestState[2]);
 
+					g_bStateDebug = TRUE;
+					ConRedirect(CON_DEBUG, "sncpu_c.log");
+					SNCPUSetDebug(TRUE, 1);
+					SNCPUSetExecuteFunc(SNCPUExecute_C);
+					m_Snes.RestoreState(&_TestState[0]);
+					m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
+					m_Snes.SaveState(&_TestState[1]);
+					ConRedirect(CON_DEBUG, NULL);
 
-			if (m_eState == SNESWIN_STATE_STEPFRAME)
-			{
-#if CODE_DEBUG
-                ConPrint("Frame: %d\n", m_Snes.GetFrame());
+					SNCPUSetExecuteFunc(SNCPUExecute_C);
+					ConRedirect(CON_DEBUG, "sncpu_9x.log");
+					m_Snes.RestoreState(&_TestState[0]);
+					m_Snes.ExecuteFrame(&Input, &m_DDSurface, NULL, Emu::System::MODE_INACCURATEDETERMINISTIC);
+					m_Snes.SaveState(&_TestState[2]);
+					g_bStateDebug = FALSE;
+					SNCPUSetDebug(FALSE, 0);
+					ConRedirect(CON_DEBUG, NULL);
+
+					SNStateCompare(&_TestState[1], &_TestState[2]);
+
+				}
+#else
+//pMixBuffer=NULL;
+				SNCPUSetExecuteFunc(SNCPUExecute_C);
+				//	SNCPUSetExecuteFunc(SNCPUExecute_9X);
+				SNSPCSetExecuteFunc(SNSPCExecute_C);
+				//SNSPCSetExecuteFunc(SNSPCExecute_9X);
+				m_Snes.ExecuteFrame(&Input, &m_DDSurface, pMixBuffer, Emu::System::MODE_ACCURATENONDETERMINISTIC);
 #endif
 
-				m_eState = SNESWIN_STATE_PAUSED;
-			}
+
+				if (m_eState == SNESWIN_STATE_STEPFRAME)
+				{
+#if CODE_DEBUG
+					ConPrint("Frame: %d\n", m_Snes.GetFrame());
+#endif
+
+					m_eState = SNESWIN_STATE_PAUSED;
+				}
 
 #if !CODE_DEBUG
-		//	DDrawWaitVBlank();
+				//	DDrawWaitVBlank();
 #endif
-			OnPaint();
+				OnPaint();
+			}
 		}
 	}
-
 }
 
 void CSnesWin::ScreenShot()
@@ -581,7 +607,7 @@ void CSnesWin::ScreenShot()
 
 
 
-Bool CSnesWin::LoadRom(char *pFilePath)
+Bool CSnesWin::LoadRom(char* pFilePath)
 {
 	Char Path[PATH_MAX];
 	Char Ext[256];
@@ -642,16 +668,28 @@ Bool CSnesWin::LoadRom(char *pFilePath)
 
 	LoadBRAM();
 
-    CPath path;
+	CPath path;
 
-    path.SetPath(Path);
-    path.SetExt(".log");
+	path.SetPath(Path);
+	path.SetExt(".log");
 
 #if SNES_DEBUG
-    SnesDebugEnd();
-    SnesDebugBegin(&m_Snes, path.GetPath());
+	SnesDebugEnd();
+	SnesDebugBegin(&m_Snes, path.GetPath());
 #endif
-    
+
+	SNRomVideoE romtype = getCartInfo();
+	if (romtype == SNROM_VIDEO_NTSC)
+	{
+		FPS = NTSCFPS;
+		maxPeriod = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
+	}
+	else
+	{
+		FPS = PALFPS;
+		maxPeriod = std::chrono::microseconds(std::chrono::seconds(1)) / FPS;
+	}
+
 	return TRUE;
 }
 
@@ -997,3 +1035,7 @@ void CSnesWin::PathResolve(char *pOutPath, const Char *pFilePath, const Char *pD
 	strcpy(pOutPath, path.GetPath());
 }
 
+SNRomVideoE CSnesWin::getCartInfo()
+{
+	return m_Rom.m_eVideoType;
+}

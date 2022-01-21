@@ -86,6 +86,7 @@ public:
 	void SetInput(Int32 iPort, CInputDevice *pDevice);
 //	void UpdatePalette();
 //	void SetPalette(Color32T *pPalette);
+	SNRomVideoE getCartInfo();
 };
 
 
