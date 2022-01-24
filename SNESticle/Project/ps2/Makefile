@@ -1,14 +1,6 @@
 # SNESticlePS2 makefile
 #
 
-ifndef DEV
-$(error "DEV not defined!")
-endif
-
-ifndef MACHTYPE
-$(error Error: MACHTYPE not defined [export MACHTYPE])
-endif
-
 #
 # Tool versions
 #
