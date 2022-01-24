@@ -9,8 +9,13 @@ jobs:
     - uses: actions/checkout@v1
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
-    - name: MSBuild x86
-      working-directory: Project/win32/
+    - name: main
+      working-directory: gep/Project/win32/
+      run: |
+           dir
+           msbuild gepwin32.vcxproj /m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
+    - name: main
+      working-directory: SNESticle/Project/win32/
       run: |
            dir
            msbuild win32.vcxproj /m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
