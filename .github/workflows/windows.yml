@@ -28,25 +28,25 @@ jobs:
           title: "Development Build"
           files: |
             SNESticle/release/*.exe
-  build:
-    runs-on: ubuntu-latest
-    container: ps2dev/gskit:latest
-    steps:
-    - uses: actions/checkout@v2        
-    - name: Install dependencies
-      run: |
-        apk add build-base git bash cmake
-        export PS2DEV=/usr/local/ps2dev
-        export PS2SDK=$PS2DEV/ps2sdk
-        export GSKIT=$PS2DEV/gsKit
-        export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
-        export DEV=$PS2DEV
-        ls $PS2DEV
-        ls $PS2DEV/ee/bin
-        ls $PS2DEV/iop/bin
-        ls $PS2DEV/dvp/bin
-        ls $PS2SDK/bin
-    - name: Compile project
-      run: |
-        cd SNESticle/Project/ps2
-        make -j$(getconf _NPROCESSORS_ONLN)    
+#  build:
+#    runs-on: ubuntu-latest
+#    container: ps2dev/gskit:latest
+#    steps:
+#    - uses: actions/checkout@v2        
+#    - name: Install dependencies
+#      run: |
+#        apk add build-base git bash cmake
+#        export PS2DEV=/usr/local/ps2dev
+#        export PS2SDK=$PS2DEV/ps2sdk
+#        export GSKIT=$PS2DEV/gsKit
+#        export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
+#        export DEV=$PS2DEV
+#        ls $PS2DEV
+#        ls $PS2DEV/ee/bin
+#        ls $PS2DEV/iop/bin
+#        ls $PS2DEV/dvp/bin
+#        ls $PS2SDK/bin
+#    - name: Compile project
+#      run: |
+#        cd SNESticle/Project/ps2
+#        make -j$(getconf _NPROCESSORS_ONLN)    
