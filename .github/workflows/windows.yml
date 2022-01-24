@@ -13,12 +13,12 @@ jobs:
       working-directory: gep/Project/win32/
       run: |
            dir
-           msbuild gepwin32.vcxproj /m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
+           msbuild gepwin32.vcxproj -m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
     - name: main
       working-directory: SNESticle/Project/win32/
       run: |
            dir
-           msbuild win32.vcxproj /m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
+           msbuild win32.vcxproj -m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
     - name: upload
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
@@ -27,4 +27,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            "SNESticle/release/SNESticle - Win32.exe"
+            SNESticle/release/*.exe
