@@ -10,6 +10,7 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
     - name: MSBuild x86
-      working-directory: Project/win32
+      working-directory: Project/win32/
       run: |
+           dir
            msbuild win32.vcxproj /m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
