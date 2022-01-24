@@ -40,7 +40,12 @@ jobs:
         export PS2SDK=$PS2DEV/ps2sdk
         export GSKIT=$PS2DEV/gsKit
         export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
-        env
+        export DEV=$PS2DEV
+        ls $PS2DEV/bin
+        ls $PS2DEV/ee/bin
+        ls $PS2DEV/iop/bin
+        ls $PS2DEV/dvp/bin
+        ls $PS2SDK/bin
     - name: Compile project
       run: |
         cd SNESticle/Project/ps2
