@@ -129,10 +129,6 @@ INCLUDE+= -I$(GEPDIR)/Source/common/zlib
 INCLUDE+= -I$(GEPDIR)/Source/common/unzip
 INCLUDE+= -I$(SNESSOURCE)/ps2
 INCLUDE+= -I$(SNESSOURCE)/common
-INCLUDE+= -I$(NESSOURCE)/ps2
-INCLUDE+= -I$(NESSOURCE)/ps2/n6502
-INCLUDE+= -I$(NESSOURCE)/common/ncpu
-INCLUDE+= -I$(NESSOURCE)/common
 INCLUDE+= -I$(MODULE_BASE)/mcsave/ee
 INCLUDE+= -I$(MODULE_BASE)/sjpcm/ee
 INCLUDE+= -I$(MODULE_BASE)/netplay/Source/common
@@ -282,26 +278,6 @@ OBJS +=	snspc.o
 
 OBJS +=	snmask128.o 
 OBJS +=	snspcrom.o 
-
-#
-# NES objects
-#
-
-OBJS +=	nesdisk.o 
-OBJS +=	nesio.o 
-OBJS +=	nesmmu.o 
-OBJS +=	n6502.o 
-OBJS +=	ncpu_c.o 
-OBJS +=	ndisasm.o 
-OBJS +=	nescpu.o 
-OBJS +=	nesppu.o 
-OBJS +=	nesppurender.o 
-OBJS +=	nespal.o 
-OBJS +=	nesrom.o 
-OBJS +=	nesspu.o 
-OBJS +=	nesspumix.o 
-OBJS +=	nesstate.o 
-OBJS +=	nes.o 
 
 
 #
