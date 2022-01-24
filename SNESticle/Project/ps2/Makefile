@@ -27,9 +27,9 @@ export DVP_GCC_VERSION ?= 3.2.2-beta
 
 PS2DEV       ?= $(DEV)/ps2dev
 
-EE_BASE      = $(PS2DEV)/gcc/$(EE_GCC_VERSION)/install/$(MACHTYPE)/ee
-IOP_BASE     = $(PS2DEV)/gcc/$(IOP_GCC_VERSION)/install/$(MACHTYPE)/iop
-DVP_BASE     = $(PS2DEV)/gcc/$(DVP_GCC_VERSION)/install/$(MACHTYPE)/dvp
+EE_BASE      = $(PS2DEV)/ee
+IOP_BASE     = $(PS2DEV)/iop
+DVP_BASE     = $(PS2DEV)/dvp
 
 EE_PREFIX   = $(EE_BASE)/bin/ee-
 EE_CC  	    = $(EE_PREFIX)gcc
