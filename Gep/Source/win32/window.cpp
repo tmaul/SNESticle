@@ -14,7 +14,7 @@ LRESULT CALLBACK WinWndProc (HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	CGepWin *pWin;
 
-	pWin = (CGepWin *)GetWindowLong(hWnd, 0);
+	pWin = (CGepWin *)GetWindowLongPtr(hWnd, 0);
 
 	if (pWin)
 	{
@@ -186,7 +186,7 @@ void CGepWin::Create(Char *pClassName, Char *pAppName, Uint32 uStyle, LPCSTR pMe
 		NULL,
 		hInstance, NULL );
 
-	SetWindowLong(m_hWnd, 0, (LONG)this);
+	SetWindowLongPtr(m_hWnd, 0, (LONG_PTR)this);
 }
 
 void CGepWin::Destroy()

@@ -16,6 +16,7 @@ void ProfCtrReset()
 
 Uint32 ProfCtrGetCycle()
 {
+#if 0
 	Uint32 uCycles;
 	__asm {
 		RDTSC
@@ -23,6 +24,9 @@ Uint32 ProfCtrGetCycle()
 	};
 
 	return uCycles;
+#else
+	return __rdtsc();
+#endif
 }
 
 Uint32 ProfCtrGetCounter0()
