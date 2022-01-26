@@ -1,0 +1,9 @@
+Todo ps2 side: 
+- Update the project to the latest ps2sdk
+
+Todo pc side:
+
+Todo dreamcast side: 
+
+
+
