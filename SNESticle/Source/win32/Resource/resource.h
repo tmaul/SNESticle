@@ -11,6 +11,7 @@
 #define ID_EMU_DISASM                   107
 #define ID_DISASM_CPUMEMORY             108
 #define ID_DISASM_SPCMEMORY             109
+#define IDR_ANICURSORS1                 111
 #define ID_FILE_EXIT                    40001
 #define ID_HELP_ABOUT                   40002
 #define ID_EMU_SAVESTATE                40003
@@ -46,10 +47,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        110
+#define _APS_NEXT_RESOURCE_VALUE        112
 #define _APS_NEXT_COMMAND_VALUE         40032
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
-

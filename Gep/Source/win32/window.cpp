@@ -9,6 +9,18 @@
 #include "commctrl.h"
 
 static HWND _Win_hWnd;
+static HCURSOR anicur;
+HCURSOR LoadAnimatedCursor(UINT nID)
+{
+	HINSTANCE hInst = WinMainGetInstance();
+	HRSRC hRes = FindResource(hInst,MAKEINTRESOURCE(nID),"ANICURSORS");
+	DWORD dwSize = SizeofResource(hInst,hRes);
+	HGLOBAL hGlob = LoadResource(hInst,hRes);
+	LPBYTE pBytes = (LPBYTE)LockResource(hGlob);
+
+	return (HCURSOR)CreateIconFromResource(pBytes,dwSize,FALSE,0x00030000);
+}
+
 
 LRESULT CALLBACK WinWndProc (HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -28,6 +40,13 @@ LRESULT CGepWin::OnMessage(UINT iMsg, WPARAM wParam, LPARAM lParam)
 	//ConPrint("%02X\n", iMsg);
 	switch (iMsg)
 	{
+	case WM_SETCURSOR:
+		//if (LOWORD(lParam) == HTCLIENT)
+		{
+			SetCursor(anicur);
+			return TRUE;
+		}
+		break;
 	case WM_ENTERMENULOOP:
 		SetActive(FALSE);
 		break;
@@ -133,7 +152,7 @@ LRESULT CGepWin::OnMessage(UINT iMsg, WPARAM wParam, LPARAM lParam)
 Bool CGepWin::RegisterClass(HINSTANCE hInstance, Char *pClassName, LPCSTR pMenuName)
 {
 	WNDCLASS  WndClass;
-
+	anicur = LoadAnimatedCursor(111);
  //   WndClass.cbSize        = sizeof (WndClass) ;
 	WndClass.style         = 0;
 	WndClass.lpfnWndProc   = WinWndProc;
@@ -141,7 +160,7 @@ Bool CGepWin::RegisterClass(HINSTANCE hInstance, Char *pClassName, LPCSTR pMenuN
 	WndClass.cbWndExtra    = sizeof(void *);
 	WndClass.hInstance     = hInstance ;
 	WndClass.hIcon         = NULL; //LoadIcon (hInstance, MAKEINTRESOURCE(IDI_ICON1)) ;
-	WndClass.hCursor       = LoadCursor (NULL, IDC_ARROW) ;
+	WndClass.hCursor       = anicur;
 	WndClass.hbrBackground = NULL; //(HBRUSH)GetStockObject(BLACK_BRUSH);
 	WndClass.lpszMenuName  = pMenuName;
 	WndClass.lpszClassName = pClassName;
