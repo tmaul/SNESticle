@@ -19,6 +19,16 @@ jobs:
       run: |
            dir
            msbuild win32.vcxproj -m /property:Configuration=Release /property:Platform=x86 /verbosity:minimal
+    - name: main64
+      working-directory: gep/Project/win32/
+      run: |
+           dir
+           msbuild gepwin32.vcxproj -m /property:Configuration=Release /property:Platform=x64 /verbosity:minimal
+    - name: main64
+      working-directory: SNESticle/Project/win32/
+      run: |
+           dir
+           msbuild win32.vcxproj -m /property:Configuration=Release /property:Platform=x64 /verbosity:minimal           
     - name: upload
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
@@ -28,6 +38,7 @@ jobs:
           title: "Development Build"
           files: |
             SNESticle/release/*.exe
+            SNESticle/x64/Release/*.exe
 #  build:
 #    runs-on: ubuntu-latest
 #    container: ps2dev/gskit:latest
