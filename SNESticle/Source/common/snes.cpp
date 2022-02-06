@@ -636,7 +636,7 @@ void SNCPU_TRAPFUNC SnesSystem::WriteSRAM(SNCpuT *pCpu, Uint32 uAddr, Uint8 uDat
 	pSRAM[uAddr & (pSnes->m_uSramSize-1)] = uData;
 }
 
-
+#ifdef SNES_DSP1
 
 Uint8 SNCPU_TRAPFUNC SnesSystem::ReadDSP1(SNCpuT *pCpu, Uint32 uAddr)
 {
@@ -677,7 +677,7 @@ void SNCPU_TRAPFUNC SnesSystem::WriteDSP1(SNCpuT *pCpu, Uint32 uAddr, Uint8 uDat
 
 }
 
-
+#endif
 
 
 //
@@ -727,7 +727,9 @@ SnesSystem::SnesSystem()
 	m_PPURender.SetPPU(&m_PPU);
 	m_PPU.SetPPURender(&m_PPURender);
 
+#if SNES_DSP1
 	m_pDsp = NULL;
+#endif
 }
 
 SnesSystem::~SnesSystem()
@@ -735,7 +737,9 @@ SnesSystem::~SnesSystem()
 	SetRom(NULL);
 	SNCPUDelete(&m_Cpu);
 	SNSPCDelete(&m_Spc);
+#if SNES_DSP1
 	m_pDsp = NULL;
+#endif 
 }
 
 void SnesSystem::Reset()
@@ -750,11 +754,12 @@ void SnesSystem::Reset()
 	m_SpcDspMixer.Reset();
 	m_SpcDspSilentMixer.Reset();
 
+#ifdef SNES_DSP1
 	if (m_pDsp)
 	{
 		m_pDsp->Reset();
 	}
-	
+#endif 
 
 #if CODE_DEBUG
 	memset(_CPUHackMem, 0, sizeof(_CPUHackMem));
@@ -791,9 +796,9 @@ void SnesSystem::SetSnesRom(SnesRom *pRom)
 		// disconnect from current rom
 		m_pRom = NULL;
 	}
-
+#ifdef SNES_DSP1
 	m_pDsp = NULL;
-
+#endif 
 	// set rom
 	m_pRom = pRom;
 

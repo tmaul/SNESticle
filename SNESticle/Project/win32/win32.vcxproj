@@ -207,7 +207,9 @@
     <ClCompile Include="..\..\Source\common\sndebug.cpp" />
     <ClCompile Include="..\..\Source\common\sndisasm.c" />
     <ClCompile Include="..\..\Source\common\sndma.cpp" />
-    <ClCompile Include="..\..\Source\common\sndsp1.cpp" />
+    <ClCompile Include="..\..\Source\common\sndsp1.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Source\common\snes.cpp" />
     <ClCompile Include="..\..\Source\common\snesreg.cpp" />
     <ClCompile Include="..\..\Source\common\snio.cpp" />

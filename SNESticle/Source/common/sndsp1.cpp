@@ -1,4 +1,4 @@
-
+#ifdef SNES_DSP1
 
 #include <string.h>
 #include "types.h"
@@ -687,3 +687,4 @@ void SNDSP1::WriteData(Uint32 uAddr, Uint8 uData)
 
 
 
+#endif 
