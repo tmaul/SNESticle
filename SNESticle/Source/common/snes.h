@@ -25,7 +25,7 @@ extern "C" {
 #define SNES_RAMSIZE  0x20000
 #define SNES_SRAMSIZE (256 * 1024)
 
-#define SNES_DSP1 (CODE_PLATFORM==CODE_WIN32)
+//#define SNES_DSP1 (CODE_PLATFORM==CODE_WIN32)
 
 class SnesSystem : public Emu::System
 {
@@ -69,11 +69,11 @@ private:
 	SNSpcIO		m_SpcIO;
 	SNSpcT		m_Spc;
 	SNSpcDsp	m_SpcDsp;
-
+#if SNES_DSP1
 	// extra hardware
 	ISNDSP		*m_pDsp;
 
-#if SNES_DSP1
+
 	SNDSP1		m_DSP1;
 #endif
 
@@ -97,9 +97,10 @@ private:
 	static void SNCPU_TRAPFUNC  Write4000(SNCpuT *pCpu, Uint32 uAddr, Uint8 uData);
 	static Uint8 SNCPU_TRAPFUNC ReadSRAM(SNCpuT *pCpu, Uint32 uAddr);
 	static void SNCPU_TRAPFUNC  WriteSRAM(SNCpuT *pCpu, Uint32 uAddr, Uint8 uData);
+#ifdef SNES_DSP1
 	static Uint8 SNCPU_TRAPFUNC ReadDSP1(SNCpuT *pCpu, Uint32 uAddr);
 	static void SNCPU_TRAPFUNC  WriteDSP1(SNCpuT *pCpu, Uint32 uAddr, Uint8 uData);
-
+#endif 
     static Uint8 SNCPU_TRAPFUNC Read2000Debug(SNCpuT *pCpu, Uint32 uAddr);
     static Uint8 SNCPU_TRAPFUNC Read4000Debug(SNCpuT *pCpu, Uint32 uAddr);
     static void SNCPU_TRAPFUNC  Write2000Debug(SNCpuT *pCpu, Uint32 uAddr, Uint8 uData);

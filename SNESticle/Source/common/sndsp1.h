@@ -1,7 +1,7 @@
-
-
 #ifndef _SNDSP1_H
 #define _SNDSP1_H
+
+#ifdef SNES_DSP1
 
 #include "sndsp.h"
 
@@ -28,5 +28,7 @@ public:
 
 	static SNDSP1 *GetInstance();
 };
+
+#endif
 
 #endif

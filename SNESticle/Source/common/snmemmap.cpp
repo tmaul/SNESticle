@@ -190,7 +190,9 @@ void SnesSystem::MapMem(SnesMemMapT *pMemMap)
 #endif
 					break;
 				case SNESMEM_TYPE_DSP1:
+#ifdef SNES_DSP1
 					SNCPUSetTrap(&m_Cpu, uStartAddr, nBytes, ReadDSP1, WriteDSP1);
+#endif 
 					break;
 				default:
 					break;
